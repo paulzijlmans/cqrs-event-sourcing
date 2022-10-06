@@ -1,8 +1,14 @@
 package com.springbank.user.cmd.api.dto;
 
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode(callSuper = true)
 public class RegisterUserResponse extends BaseResponse {
 
-    public RegisterUserResponse(String message) {
+    private String id;
+
+    public RegisterUserResponse(String id, String message) {
         super(message);
+        this.id = id;
     }
 }

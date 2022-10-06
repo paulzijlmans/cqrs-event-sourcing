@@ -13,9 +13,11 @@
 	<version>1.0.0</version>
 	<name>user.cmd.api</name>
 	<description>User Command API Project</description>
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
