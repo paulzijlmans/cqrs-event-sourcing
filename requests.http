@@ -1,0 +1,81 @@
+###
+# Register User
+POST /api/v1/registerUser
+Host: localhost:2000
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "user": {
+    "firstname": "Peter",
+    "lastname": "Doe",
+    "emailAddress": "peter@springbank.com",
+    "account": {
+      "username": "peterd",
+      "password": "P@ssw0rd",
+      "roles": [
+        "READ_PRIVILEGE"
+      ]
+    }
+  }
+}
+
+###
+# Update User
+PUT /api/v1/updateUser/{{userId}}
+Host: localhost:2000
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "user": {
+    "firstname": "Peter",
+    "lastname": "Doe",
+    "emailAddress": "peter.doe@springbank.com",
+    "account": {
+      "username": "peterd1",
+      "password": "P@ssw0rd20",
+      "roles": [
+        "READ_PRIVILEGE", "WRITE_PRIVILEGE"
+      ]
+    }
+  }
+}
+
+###
+# Remove User
+DELETE /api/v1/removeUser/{{userId}}
+Host: localhost:2000
+Authorization: Bearer {{token}}
+
+
+
+###
+# User Lookup
+GET /api/v1/userLookup/
+Host: localhost:2000
+Authorization: Bearer {{token}}
+
+###
+# User Lookup by ID
+GET /api/v1/userLookup/byId/{{userId}}
+Host: localhost:2000
+Authorization: Bearer {{token}}
+
+###
+# User Lookup by filter
+GET /api/v1/userLookup/byFilter/john
+Host: localhost:2000
+Authorization: Bearer {{token}}
+
+
+
+###
+# Token
+POST /oauth/token
+Host: localhost:8084
+Authorization: Basic {{basicAuth}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&username={{username}}&password={{password}}
+
