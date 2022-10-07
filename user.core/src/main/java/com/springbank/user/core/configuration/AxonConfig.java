@@ -2,6 +2,7 @@ package com.springbank.user.core.configuration;
 
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoClient;
+import com.thoughtworks.xstream.XStream;
 import org.axonframework.eventhandling.tokenstore.TokenStore;
 import org.axonframework.eventsourcing.eventstore.EmbeddedEventStore;
 import org.axonframework.eventsourcing.eventstore.EventStorageEngine;
@@ -77,5 +78,13 @@ public class AxonConfig {
                 .storageEngine(storageEngine)
                 .messageMonitor(configuration.messageMonitor(EventStore.class, "eventStore"))
                 .build();
+    }
+
+    @Bean
+    public XStream xStream() {
+        XStream xStream = new XStream();
+
+        xStream.allowTypesByWildcard(new String[] { "com.springbank.**" });
+        return xStream;
     }
 }
