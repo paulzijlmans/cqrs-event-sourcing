@@ -7,14 +7,14 @@ Content-Type: application/json
 
 {
   "user": {
-    "firstname": "Peter",
+    "firstname": "John",
     "lastname": "Doe",
-    "emailAddress": "peter@springbank.com",
+    "emailAddress": "john@springbank.com",
     "account": {
-      "username": "peterd",
-      "password": "P@ssw0rd",
+      "username": "johnd",
+      "password": "P@ssw0rd1",
       "roles": [
-        "READ_PRIVILEGE"
+        "READ_PRIVILEGE", "WRITE_PRIVILEGE"
       ]
     }
   }
@@ -67,15 +67,3 @@ Authorization: Bearer {{token}}
 GET /api/v1/userLookup/byFilter/john
 Host: localhost:2000
 Authorization: Bearer {{token}}
-
-
-
-###
-# Token
-POST /oauth/token
-Host: localhost:8084
-Authorization: Basic {{basicAuth}}
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=password&username={{username}}&password={{password}}
-

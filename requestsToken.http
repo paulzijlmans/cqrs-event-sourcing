@@ -1,0 +1,9 @@
+###
+# Token
+POST /oauth/token
+Host: localhost:8084
+Authorization: Basic {{basicAuth}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&username={{username}}&password={{password}}
+

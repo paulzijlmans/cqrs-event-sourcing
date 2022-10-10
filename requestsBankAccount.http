@@ -1,0 +1,15 @@
+###
+# Open Bank Account
+POST /api/v1/openBankAccount
+Host: localhost:2000
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "accountHolderId": "d322ffe8-3bc6-4821-9ebd-11d78c52fc92",
+  "accountType": "CURRENT",
+  "openingBalance": 100.0
+}
+
+
+
