@@ -28,8 +28,8 @@
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-resolver-dns-native-macos</artifactId>
+			<classifier>osx-aarch_64</classifier>
 			<version>4.1.82.Final</version>
-			<classifier>osx-x86_64</classifier>
 		</dependency>
 
 		<dependency>

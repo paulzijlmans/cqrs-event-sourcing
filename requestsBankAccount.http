@@ -22,5 +22,15 @@ Content-Type: application/json
   "amount": 50.0
 }
 
+###
+# Withdraw Funds
+PUT /api/v1/withdrawFunds/e6d41467-2f37-4eaa-bb88-8c66ced26c1a
+Host: localhost:2000
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "amount": 5.0
+}
 
 
