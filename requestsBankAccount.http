@@ -38,4 +38,33 @@ Content-Type: application/json
 DELETE /api/v1/closeBankAccount/e6d41467-2f37-4eaa-bb88-8c66ced26c1a
 Host: localhost:2000
 Authorization: Bearer {{token}}
-Content-Type: application/json
+
+###
+# Account Lookup - all accounts
+GET /api/v1/bankAccountLookup/
+Host: localhost:2000
+Authorization: Bearer {{token}}
+
+###
+# Account Lookup - by id
+GET /api/v1/bankAccountLookup/byId/9f067e85-570d-4b36-8439-90d77abd3fa6
+Host: localhost:2000
+Authorization: Bearer {{token}}
+
+###
+# Account Lookup - by holderId
+GET /api/v1/bankAccountLookup/byHolderId/d322ffe8-3bc6-4821-9ebd-11d78c52fc92
+Host: localhost:2000
+Authorization: Bearer {{token}}
+
+###
+# Account Lookup - with balance - greater than
+GET /api/v1/bankAccountLookup/withBalance/GREATER_THAN/50
+Host: localhost:2000
+Authorization: Bearer {{token}}
+
+###
+# Account Lookup - with balance - less than
+GET /api/v1/bankAccountLookup/withBalance/LESS_THAN/200
+Host: localhost:2000
+Authorization: Bearer {{token}}
