@@ -33,4 +33,9 @@ Content-Type: application/json
   "amount": 5.0
 }
 
-
+###
+# Close Bank Account
+DELETE /api/v1/closeBankAccount/e6d41467-2f37-4eaa-bb88-8c66ced26c1a
+Host: localhost:2000
+Authorization: Bearer {{token}}
+Content-Type: application/json
