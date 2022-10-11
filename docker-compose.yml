@@ -1,10 +1,11 @@
-version: '3.7'
+version: '3.9'
 
 services:
 
   user-cmd-api:
     container_name: user-cmd-api
-    image: user-cmd-api:latest
+    build: ./user-management/user.cmd.api
+    image: user-cmd-api
     restart: always
     ports:
       - "8081:8081"
@@ -15,7 +16,8 @@ services:
 
   user-query-api:
     container_name: user-query-api
-    image: user-query-api:latest
+    build: ./user-management/user.query.api
+    image: user-query-api
     restart: always
     ports:
       - "8082:8082"
@@ -26,7 +28,8 @@ services:
 
   bankacc-cmd-api:
     container_name: bankacc-cmd-api
-    image: bankacc-cmd-api:latest
+    build: ./bank-account/bankacc.cmd.api
+    image: bankacc-cmd-api
     restart: always
     ports:
       - "9091:9091"
@@ -37,7 +40,8 @@ services:
 
   bankacc-query-api:
     container_name: bankacc-query-api
-    image: bankacc-query-api:latest
+    build: ./bank-account/bankacc.query.api
+    image: bankacc-query-api
     restart: always
     ports:
       - "9092:9092"
@@ -48,7 +52,8 @@ services:
 
   api-gateway:
     container_name: api-gateway
-    image: api-gateway:latest
+    build: ./api-gateway
+    image: api-gateway
     restart: always
     ports:
       - "2000:2000"
@@ -59,7 +64,8 @@ services:
 
   user-oauth2:
     container_name: user-oauth2
-    image: user-oauth2:latest
+    build: ./user-management/user.oath2.0
+    image: user-oauth2
     restart: always
     ports:
       - "8084:8084"
