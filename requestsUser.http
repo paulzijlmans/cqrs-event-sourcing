@@ -7,14 +7,14 @@ Content-Type: application/json
 
 {
   "user": {
-    "firstname": "John",
+    "firstname": "Jane",
     "lastname": "Doe",
-    "emailAddress": "john@springbank.com",
+    "emailAddress": "jane@springbank.com",
     "account": {
-      "username": "johnd",
-      "password": "P@ssw0rd1",
+      "username": "janed",
+      "password": "P@ssw0rd2",
       "roles": [
-        "READ_PRIVILEGE", "WRITE_PRIVILEGE"
+        "READ_PRIVILEGE"
       ]
     }
   }
