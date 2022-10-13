@@ -1,0 +1,25 @@
+FROM eclipse-temurin:17-jdk-jammy as builder
+ARG PROJECT=user.cmd.api
+ARG CORE=user.core
+WORKDIR /app
+
+ADD $PROJECT/.mvn .mvn
+ADD $PROJECT/mvnw ./
+
+ADD $CORE/pom.xml ./$CORE/pom.xml
+RUN ./mvnw -f ./$CORE/pom.xml dependency:go-offline
+ADD $CORE/src ./$CORE/src
+RUN ./mvnw -f ./$CORE/pom.xml install
+
+ADD $PROJECT/pom.xml ./
+RUN ./mvnw dependency:go-offline
+ADD $PROJECT/src ./src
+RUN ./mvnw package -DskipTests
+
+
+FROM eclipse-temurin:17-jre-jammy
+RUN addgroup demogroup; adduser  --ingroup demogroup --disabled-password demo
+USER demo
+WORKDIR /app
+COPY --from=builder /app/target/*.jar /app/*.jar
+ENTRYPOINT ["java", "-jar", "/app/*.jar" ]

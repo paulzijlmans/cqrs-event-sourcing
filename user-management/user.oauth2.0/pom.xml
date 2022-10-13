@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.springbank</groupId>
-	<artifactId>user.oath2.0</artifactId>
+	<artifactId>user.oauth2.0</artifactId>
 	<version>1.0.0</version>
-	<name>user.oath2.0</name>
+	<name>user.oauth2.0</name>
 	<description>OAuth 2.0 Authorization Server</description>
 
 	<properties>

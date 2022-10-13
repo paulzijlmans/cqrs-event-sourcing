@@ -1,0 +1,3 @@
+#!/bin/sh
+docker compose -f ./db-axon-server/docker-compose.yml up -d
+docker compose up -d --build
