@@ -1,21 +1,10 @@
 package com.springbank.bankacc.core.events;
 
 import com.springbank.bankacc.core.models.AccountType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class AccountOpenedEvent {
-    private String id;
-    private String accountHolderId;
-    private AccountType accountType;
-    private Date creationDate;
-    private double openingBalance;
+
+public record AccountOpenedEvent(String id, String accountHolderId, AccountType accountType, Date creationDate,
+                                 double openingBalance) {
 }

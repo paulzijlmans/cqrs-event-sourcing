@@ -28,8 +28,7 @@ public class DepositFundsController {
     public ResponseEntity<BaseResponse> depositFunds(@PathVariable(value = "id") String id,
                                                      @Valid @RequestBody DepositFundsCommand command) {
         try {
-            command.setId(id);
-            commandGateway.send(command);
+            commandGateway.send(new DepositFundsCommand(command.id(), command.amount()));
 
             return new ResponseEntity<>(new BaseResponse("Funds successfully deposited!"), HttpStatus.OK);
         } catch (Exception e) {

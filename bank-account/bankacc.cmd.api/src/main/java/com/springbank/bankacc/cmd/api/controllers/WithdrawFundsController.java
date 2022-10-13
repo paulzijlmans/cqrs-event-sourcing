@@ -28,8 +28,7 @@ public class WithdrawFundsController {
     public ResponseEntity<BaseResponse> withdrawFunds(@PathVariable(value = "id") String id,
                                                       @Valid @RequestBody WithdrawFundsCommand command) {
         try {
-            command.setId(id);
-            commandGateway.send(command).get();
+            commandGateway.send(new WithdrawFundsCommand(id, command.amount())).get();
 
             return new ResponseEntity<>(new BaseResponse("Withdrawal successfully completed!"), HttpStatus.OK);
         } catch (Exception e) {

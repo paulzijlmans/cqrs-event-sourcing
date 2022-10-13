@@ -31,10 +31,9 @@ public class OpenAccountController {
     @PreAuthorize("hasAuthority('WRITE_PRIVILEGE')")
     public ResponseEntity<OpenAccountResponse> openAccount(@Valid @RequestBody OpenAccountCommand command) {
         var id = UUID.randomUUID().toString();
-        command.setId(id);
 
         try {
-            commandGateway.send(command);
+            commandGateway.send(new OpenAccountCommand(id, command.accountHolderId(), command.accountType(), command.openingBalance()));
 
             return new ResponseEntity<>(new OpenAccountResponse(id, "successfully opened a new bank account!"), HttpStatus.CREATED);
         } catch (Exception e) {

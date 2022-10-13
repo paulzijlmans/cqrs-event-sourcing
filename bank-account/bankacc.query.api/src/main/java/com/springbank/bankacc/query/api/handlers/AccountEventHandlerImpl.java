@@ -25,11 +25,11 @@ public class AccountEventHandlerImpl implements AccountEventHandler {
     @Override
     public void on(AccountOpenedEvent event) {
         var bankAccount = BankAccount.builder()
-                .id(event.getId())
-                .accountHolderId(event.getAccountHolderId())
-                .creationDate(event.getCreationDate())
-                .accountType(event.getAccountType())
-                .balance(event.getOpeningBalance())
+                .id(event.id())
+                .accountHolderId(event.accountHolderId())
+                .creationDate(event.creationDate())
+                .accountType(event.accountType())
+                .balance(event.openingBalance())
                 .build();
 
         accountRepository.save(bankAccount);
@@ -38,28 +38,28 @@ public class AccountEventHandlerImpl implements AccountEventHandler {
     @EventHandler
     @Override
     public void on(FundsDepositedEvent event) {
-        var bankAccount = accountRepository.findById(event.getId());
+        var bankAccount = accountRepository.findById(event.id());
 
         if (bankAccount.isEmpty()) return;
 
-        bankAccount.get().setBalance(event.getBalance());
+        bankAccount.get().setBalance(event.balance());
         accountRepository.save(bankAccount.get());
     }
 
     @EventHandler
     @Override
     public void on(FundsWithdrawnEvent event) {
-        var bankAccount = accountRepository.findById(event.getId());
+        var bankAccount = accountRepository.findById(event.id());
 
         if (bankAccount.isEmpty()) return;
 
-        bankAccount.get().setBalance(event.getBalance());
+        bankAccount.get().setBalance(event.balance());
         accountRepository.save(bankAccount.get());
     }
 
     @EventHandler
     @Override
     public void on(AccountClosedEvent event) {
-        accountRepository.deleteById(event.getId());
+        accountRepository.deleteById(event.id());
     }
 }

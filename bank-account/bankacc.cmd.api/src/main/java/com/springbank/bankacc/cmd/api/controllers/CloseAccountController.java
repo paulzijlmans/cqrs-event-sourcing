@@ -28,11 +28,7 @@ public class CloseAccountController {
     @PreAuthorize("hasAuthority('WRITE_PRIVILEGE')")
     public ResponseEntity<BaseResponse> closeAccount(@PathVariable(value = "id") String id) {
         try {
-            var command = CloseAccountCommand.builder()
-                    .id(id)
-                    .build();
-
-            commandGateway.send(command);
+            commandGateway.send(new CloseAccountCommand(id));
 
             return new ResponseEntity<>(new BaseResponse("Bank account successfully closed!"), HttpStatus.OK);
         } catch (Exception e) {

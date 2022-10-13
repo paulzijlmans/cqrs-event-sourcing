@@ -25,23 +25,23 @@ public class AccountQueryHandlerImpl implements AccountQueryHandler {
 
     @QueryHandler
     @Override
-    public AccountLookupResponse findAccountById(FindAccountByIdQuery query) {
-        var bankAccount = accountRepository.findById(query.getId());
+    public AccountLookupResponse handle(FindAccountByIdQuery query) {
+        var bankAccount = accountRepository.findById(query.id());
         return bankAccount.map(account -> new AccountLookupResponse("Bank Account Successfully Returned!", account))
-                .orElseGet(() -> new AccountLookupResponse("No Bank Account Found for ID - " + query.getId()));
+                .orElseGet(() -> new AccountLookupResponse("No Bank Account Found for ID - " + query.id()));
     }
 
     @QueryHandler
     @Override
-    public AccountLookupResponse findAccountByHolderId(FindAccountByHolderIdQuery query) {
-        var bankAccount = accountRepository.findByAccountHolderId(query.getAccountHolderId());
+    public AccountLookupResponse handle(FindAccountByHolderIdQuery query) {
+        var bankAccount = accountRepository.findByAccountHolderId(query.accountHolderId());
         return bankAccount.map(account -> new AccountLookupResponse("Bank Account Successfully Returned!", account))
-                .orElseGet(() -> new AccountLookupResponse("No Bank Account Found for Holder ID - " + query.getAccountHolderId()));
+                .orElseGet(() -> new AccountLookupResponse("No Bank Account Found for Holder ID - " + query.accountHolderId()));
     }
 
     @QueryHandler
     @Override
-    public AccountLookupResponse findAllAccounts(FindAllAccountsQuery query) {
+    public AccountLookupResponse handle(FindAllAccountsQuery query) {
         var bankAccountIterator = accountRepository.findAll();
 
         if (!bankAccountIterator.iterator().hasNext())
@@ -55,10 +55,10 @@ public class AccountQueryHandlerImpl implements AccountQueryHandler {
 
     @QueryHandler
     @Override
-    public AccountLookupResponse findAccountsWithBalance(FindAccountsWithBalanceQuery query) {
-        var bankAccounts = query.getEqualityType() == EqualityType.GREATER_THAN
-                ? accountRepository.findByBalanceGreaterThan(query.getBalance())
-                : accountRepository.findByBalanceLessThan(query.getBalance());
+    public AccountLookupResponse handle(FindAccountsWithBalanceQuery query) {
+        var bankAccounts = query.equalityType() == EqualityType.GREATER_THAN
+                ? accountRepository.findByBalanceGreaterThan(query.balance())
+                : accountRepository.findByBalanceLessThan(query.balance());
 
         return bankAccounts != null && bankAccounts.size() > 0
                 ? new AccountLookupResponse("Successfully Returned " + bankAccounts.size() + " Bank Account(s)!", bankAccounts)
