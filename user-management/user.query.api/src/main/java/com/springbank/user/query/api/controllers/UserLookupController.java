@@ -35,7 +35,7 @@ public class UserLookupController {
             var response = queryGateway.query(query, ResponseTypes.instanceOf(UserLookupResponse.class)).join();
 
             if (response == null || response.getUsers() == null) {
-                return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
 
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -55,7 +55,7 @@ public class UserLookupController {
             var response = queryGateway.query(query, ResponseTypes.instanceOf(UserLookupResponse.class)).join();
 
             if (response == null || response.getUsers() == null) {
-                return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
 
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -75,7 +75,7 @@ public class UserLookupController {
             var response = queryGateway.query(query, ResponseTypes.instanceOf(UserLookupResponse.class)).join();
 
             if (response == null || response.getUsers() == null) {
-                return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
 
             return new ResponseEntity<>(response, HttpStatus.OK);

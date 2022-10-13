@@ -6,9 +6,9 @@ import com.springbank.user.query.api.queries.FindUserByIdQuery;
 import com.springbank.user.query.api.queries.SearchUsersQuery;
 
 public interface UserQueryHandler {
-    UserLookupResponse getUserById(FindUserByIdQuery query);
+    UserLookupResponse handle(FindUserByIdQuery query);
 
-    UserLookupResponse searchUsers(SearchUsersQuery query);
+    UserLookupResponse handle(SearchUsersQuery query);
 
-    UserLookupResponse getAllUsers(FindAllUsersQuery query);
+    UserLookupResponse handle(FindAllUsersQuery query);
 }

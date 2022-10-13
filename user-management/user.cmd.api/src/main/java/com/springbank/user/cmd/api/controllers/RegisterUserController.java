@@ -34,11 +34,11 @@ public class RegisterUserController {
         var id = UUID.randomUUID().toString();
 
         try {
-            commandGateway.send(new RegisterUserCommand(id, command.getUser()));
+            commandGateway.send(new RegisterUserCommand(id, command.user()));
 
             return new ResponseEntity<>(new RegisterUserResponse(id, "User successfully registered!"), HttpStatus.CREATED);
         } catch (Exception e) {
-            var safeErrorMessage = "Error while processing register user request for id - " + command.getId();
+            var safeErrorMessage = "Error while processing register user request for id - " + command.id();
             log.error(e.toString());
 
             return new ResponseEntity<>(new RegisterUserResponse(id, safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);

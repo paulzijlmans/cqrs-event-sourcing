@@ -27,12 +27,11 @@ public class UpdateUserController {
     @PreAuthorize("hasAuthority('WRITE_PRIVILEGE')")
     public ResponseEntity<BaseResponse> updateUser(@PathVariable(value = "id") String id, @Valid @RequestBody UpdateUserCommand command) {
         try {
-            command.setId(id);
-            commandGateway.send(command);
+            commandGateway.send(new UpdateUserCommand(id, command.user()));
 
             return new ResponseEntity<>(new BaseResponse("User successfully updated!"), HttpStatus.OK);
         } catch (Exception e) {
-            var safeErrorMessage = "Error while processing update user request for id - " + command.getId();
+            var safeErrorMessage = "Error while processing update user request for id - " + id;
             log.error(e.toString());
 
             return new ResponseEntity<>(new BaseResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);

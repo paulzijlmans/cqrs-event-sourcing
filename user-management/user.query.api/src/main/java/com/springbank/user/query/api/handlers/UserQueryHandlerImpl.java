@@ -22,21 +22,21 @@ public class UserQueryHandlerImpl implements UserQueryHandler {
 
     @QueryHandler
     @Override
-    public UserLookupResponse getUserById(FindUserByIdQuery query) {
-        var user = userRepository.findById(query.getId());
+    public UserLookupResponse handle(FindUserByIdQuery query) {
+        var user = userRepository.findById(query.id());
         return user.map(UserLookupResponse::new).orElse(null);
     }
 
     @QueryHandler
     @Override
-    public UserLookupResponse searchUsers(SearchUsersQuery query) {
-        var users = new ArrayList<>(userRepository.findByFilterRegex(query.getFilter()));
+    public UserLookupResponse handle(SearchUsersQuery query) {
+        var users = new ArrayList<>(userRepository.findByFilterRegex(query.filter()));
         return new UserLookupResponse(users);
     }
 
     @QueryHandler
     @Override
-    public UserLookupResponse getAllUsers(FindAllUsersQuery query) {
+    public UserLookupResponse handle(FindAllUsersQuery query) {
         var users = new ArrayList<>(userRepository.findAll());
         return new UserLookupResponse(users);
     }
