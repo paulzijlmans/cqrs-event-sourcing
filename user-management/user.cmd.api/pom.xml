@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>org.axonframework</groupId>
 			<artifactId>axon-spring-boot-starter</artifactId>
-			<version>4.5.15</version>
+			<version>4.6.1</version>
 		</dependency>
 
 		<dependency>
@@ -71,7 +71,7 @@
 			<groupId>org.axonframework</groupId>
 			<artifactId>axon-test</artifactId>
 			<scope>test</scope>
-			<version>4.5.15</version>
+			<version>4.6.1</version>
 		</dependency>
 
 		<dependency>
