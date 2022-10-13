@@ -9,7 +9,6 @@ import com.springbank.user.core.events.UserRegisteredEvent;
 import com.springbank.user.core.events.UserRemovedEvent;
 import com.springbank.user.core.events.UserUpdatedEvent;
 import com.springbank.user.core.models.User;
-import java.util.UUID;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -55,7 +54,7 @@ public class UserAggregate {
         updatedUser.getAccount().setPassword(hashedPassword);
 
         var event = UserUpdatedEvent.builder()
-            .id(UUID.randomUUID().toString())
+            .id(command.getId())
             .user(updatedUser)
             .build();
 

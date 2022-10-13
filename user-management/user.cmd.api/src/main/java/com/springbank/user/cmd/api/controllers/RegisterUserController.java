@@ -32,10 +32,9 @@ public class RegisterUserController {
     @PreAuthorize("hasAuthority('WRITE_PRIVILEGE')")
     public ResponseEntity<RegisterUserResponse> registerUser(@Valid @RequestBody RegisterUserCommand command) {
         var id = UUID.randomUUID().toString();
-        command.setId(id);
 
         try {
-            commandGateway.send(command);
+            commandGateway.send(new RegisterUserCommand(id, command.getUser()));
 
             return new ResponseEntity<>(new RegisterUserResponse(id, "User successfully registered!"), HttpStatus.CREATED);
         } catch (Exception e) {
