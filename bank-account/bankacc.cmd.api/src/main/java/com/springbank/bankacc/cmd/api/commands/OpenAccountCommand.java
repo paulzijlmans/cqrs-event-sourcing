@@ -1,8 +1,10 @@
 package com.springbank.bankacc.cmd.api.commands;
 
 import com.springbank.bankacc.core.models.AccountType;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import javax.validation.constraints.Min;
@@ -10,6 +12,8 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class OpenAccountCommand {
     @TargetAggregateIdentifier
     private String id;
